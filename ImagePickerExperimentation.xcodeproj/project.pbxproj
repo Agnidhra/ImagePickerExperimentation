@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55FD785723FF9F9100F116B0 /* textFieldsDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FD785623FF9F9100F116B0 /* textFieldsDelegates.swift */; };
+		55FD785923FFB25900F116B0 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FD785823FFB25900F116B0 /* Meme.swift */; };
 		6166416823FF3223001A0D98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6166416723FF3223001A0D98 /* AppDelegate.swift */; };
 		6166416A23FF3223001A0D98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6166416923FF3223001A0D98 /* ViewController.swift */; };
 		6166416D23FF3223001A0D98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6166416B23FF3223001A0D98 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55FD785623FF9F9100F116B0 /* textFieldsDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFieldsDelegates.swift; sourceTree = "<group>"; };
+		55FD785823FFB25900F116B0 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		6166416423FF3223001A0D98 /* ImagePickerExperimentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePickerExperimentation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6166416723FF3223001A0D98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6166416923FF3223001A0D98 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55FD785523FF9F6E00F116B0 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				55FD785623FF9F9100F116B0 /* textFieldsDelegates.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
 		6166415B23FF3223001A0D98 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +66,14 @@
 		6166416623FF3223001A0D98 /* ImagePickerExperimentation */ = {
 			isa = PBXGroup;
 			children = (
+				55FD785523FF9F6E00F116B0 /* Delegate */,
 				6166416723FF3223001A0D98 /* AppDelegate.swift */,
 				6166416923FF3223001A0D98 /* ViewController.swift */,
 				6166416B23FF3223001A0D98 /* Main.storyboard */,
 				6166416E23FF3224001A0D98 /* Assets.xcassets */,
 				6166417023FF3224001A0D98 /* LaunchScreen.storyboard */,
 				6166417323FF3224001A0D98 /* Info.plist */,
+				55FD785823FFB25900F116B0 /* Meme.swift */,
 			);
 			path = ImagePickerExperimentation;
 			sourceTree = "<group>";
@@ -136,6 +150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6166416A23FF3223001A0D98 /* ViewController.swift in Sources */,
+				55FD785923FFB25900F116B0 /* Meme.swift in Sources */,
+				55FD785723FF9F9100F116B0 /* textFieldsDelegates.swift in Sources */,
 				6166416823FF3223001A0D98 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SL497JKM29;
+				DEVELOPMENT_TEAM = RJ8C5W246Y;
 				INFOPLIST_FILE = ImagePickerExperimentation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -301,7 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SL497JKM29;
+				DEVELOPMENT_TEAM = RJ8C5W246Y;
 				INFOPLIST_FILE = ImagePickerExperimentation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
