@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImagePickerExperimentation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Seu-mX-C4h" userLabel="CaptureView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UgZ-aU-5Dy">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="zVt-pp-s06" userLabel="Upper Text Field">
+                                        <rect key="frame" x="0.0" y="64" width="414" height="20"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8eB-AV-0u9" userLabel="Lower Text Field">
+                                        <rect key="frame" x="0.0" y="734" width="414" height="20"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="8eB-AV-0u9" firstAttribute="leading" secondItem="Seu-mX-C4h" secondAttribute="leading" id="2gt-YV-mhi"/>
+                                    <constraint firstAttribute="trailing" secondItem="zVt-pp-s06" secondAttribute="trailing" id="E7T-OR-dC8"/>
+                                    <constraint firstItem="UgZ-aU-5Dy" firstAttribute="leading" secondItem="Seu-mX-C4h" secondAttribute="leading" id="Q4s-gU-WS7"/>
+                                    <constraint firstItem="UgZ-aU-5Dy" firstAttribute="top" secondItem="Seu-mX-C4h" secondAttribute="top" id="S3D-CZ-2PG"/>
+                                    <constraint firstAttribute="bottom" secondItem="UgZ-aU-5Dy" secondAttribute="bottom" id="eKN-mZ-IY8"/>
+                                    <constraint firstAttribute="trailing" secondItem="UgZ-aU-5Dy" secondAttribute="trailing" id="pRP-d9-cEL"/>
+                                    <constraint firstItem="zVt-pp-s06" firstAttribute="leading" secondItem="Seu-mX-C4h" secondAttribute="leading" id="r6o-mO-YgV"/>
+                                    <constraint firstAttribute="trailing" secondItem="8eB-AV-0u9" secondAttribute="trailing" id="yWZ-bX-npK"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="2T9-ee-lEY" userLabel="Top Tool Bar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ayc-xr-zGP"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="action" id="12Q-mH-fxf" userLabel="Save">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="tappedSaveButton:" destination="BYZ-38-t0r" id="0qn-Uw-Sgi"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lNC-uI-T4v"/>
+                                    <barButtonItem title="Cancel" id="CdH-hc-xiZ" userLabel="Cancel">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="tappedCancelButton:" destination="BYZ-38-t0r" id="cBs-Dv-y9p"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="NJF-lo-Ri1" userLabel="Bottom Tool Bar">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3TQ-IE-A4e"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uuB-QT-Wb4"/>
+                                    <barButtonItem systemItem="camera" id="XwR-6Q-OZb">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="tappedCameraButton:" destination="BYZ-38-t0r" id="3bs-yI-kLG"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Album" id="d6L-nk-Ahb">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="tappedPickButton:" destination="BYZ-38-t0r" id="jrA-eF-cg8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="B9y-a7-Wbz"/>
+                                </items>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Seu-mX-C4h" firstAttribute="leading" secondItem="XbE-LR-6OV" secondAttribute="leading" id="7ma-r7-2po"/>
+                            <constraint firstItem="8eB-AV-0u9" firstAttribute="bottom" secondItem="NJF-lo-Ri1" secondAttribute="top" constant="-20" id="QjO-u2-ogj"/>
+                            <constraint firstItem="XbE-LR-6OV" firstAttribute="bottom" secondItem="Seu-mX-C4h" secondAttribute="bottom" id="Te0-M9-OwK"/>
+                            <constraint firstItem="2T9-ee-lEY" firstAttribute="leading" secondItem="XbE-LR-6OV" secondAttribute="leading" id="XMn-Ti-iUO"/>
+                            <constraint firstItem="zVt-pp-s06" firstAttribute="top" secondItem="2T9-ee-lEY" secondAttribute="bottom" constant="20" id="ack-xs-4ww"/>
+                            <constraint firstItem="XbE-LR-6OV" firstAttribute="trailing" secondItem="2T9-ee-lEY" secondAttribute="trailing" id="doh-kg-2pE"/>
+                            <constraint firstItem="NJF-lo-Ri1" firstAttribute="leading" secondItem="XbE-LR-6OV" secondAttribute="leading" id="fUf-ib-JAb"/>
+                            <constraint firstItem="Seu-mX-C4h" firstAttribute="top" secondItem="XbE-LR-6OV" secondAttribute="top" id="gqM-Jq-ZD5"/>
+                            <constraint firstItem="NJF-lo-Ri1" firstAttribute="bottom" secondItem="XbE-LR-6OV" secondAttribute="bottom" id="iND-yp-jvo"/>
+                            <constraint firstItem="2T9-ee-lEY" firstAttribute="top" secondItem="XbE-LR-6OV" secondAttribute="top" id="oex-4A-zx1"/>
+                            <constraint firstItem="XbE-LR-6OV" firstAttribute="trailing" secondItem="Seu-mX-C4h" secondAttribute="trailing" id="ywz-dK-qSq"/>
+                            <constraint firstItem="NJF-lo-Ri1" firstAttribute="trailing" secondItem="XbE-LR-6OV" secondAttribute="trailing" id="z9f-ib-9ay"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XbE-LR-6OV"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="bottomToolBar" destination="NJF-lo-Ri1" id="Qt7-dU-BTD"/>
+                        <outlet property="cameraButton" destination="XwR-6Q-OZb" id="1Oy-M7-T5t"/>
+                        <outlet property="captureView" destination="Seu-mX-C4h" id="vrz-a3-cg0"/>
+                        <outlet property="firstTextField" destination="zVt-pp-s06" id="VRH-p4-VUe"/>
+                        <outlet property="pickedImageView" destination="UgZ-aU-5Dy" id="Ekw-3t-88a"/>
+                        <outlet property="saveButton" destination="12Q-mH-fxf" id="Aha-2J-O86"/>
+                        <outlet property="secondTextField" destination="8eB-AV-0u9" id="Qkf-1k-JVL"/>
+                        <outlet property="topToolBar" destination="2T9-ee-lEY" id="gmN-Uz-xK2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+</document>
