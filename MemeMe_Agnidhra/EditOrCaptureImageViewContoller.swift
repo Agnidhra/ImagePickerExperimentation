@@ -8,8 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditOrCaptureImageViewContoller: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    
+    //MARK: Instance properties
+    var meme: Meme? = nil
+    let textFieldDelegate = TextFieldsDelegates()
+    
+    //MARK: Outlets
     @IBOutlet weak var pickedImageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var firstTextField: UITextField!
@@ -19,7 +25,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var captureView: UIView!
     
-    let textFieldDelegate = TextFieldsDelegates()
+    
+    
     //MARK: Text Attributes
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.green /* TODO: fill in appropriate UIColor */,
@@ -29,21 +36,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     ]
     
     //MARK: View Setup Functions
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickedImageView.contentMode = UIView.ContentMode(rawValue: 1)!
-        firstTextField.delegate = textFieldDelegate
-        secondTextField.delegate = textFieldDelegate
-        firstTextField.defaultTextAttributes = memeTextAttributes
-        firstTextField.textAlignment = .center
-        firstTextField.backgroundColor = UIColor.clear
-        secondTextField.defaultTextAttributes = memeTextAttributes
-        secondTextField.textAlignment = .center
-        secondTextField.backgroundColor = UIColor.clear
-        updateDefaultState()
+        if(meme == nil) {
+            setupInitialEditOrCaptureImageViewContoller()
+        }else {
+            setupEditModeImageViewContoller()
+        }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyBoardNotifications()
@@ -52,10 +53,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillDisappear(_ animated: Bool) {
         unsubscribeFromKeyBoardNotifications()
     }
+    
+    func setupInitialEditOrCaptureImageViewContoller() {
+        updateFieldStates()
+        updateDefaultState()
+    }
+    
+    func setupEditModeImageViewContoller(){
+        updateFieldStates()
+        updateEditableState(meme: meme!)
+    }
 
    
     //MARK: Delegate Functions
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             pickedImageView.image = image
@@ -65,7 +75,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     //MARK: Notification Functions
-    
     @objc func keyboardWillShow(_ notification: Notification) {
         if(secondTextField.isEditing) {
             view.frame.origin.y = -getKeyboardHeight(notification)
@@ -99,9 +108,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     //MARK: Saving Functions and Generating Meme object
-    
     func save() {
-        _ = Meme(topText: firstTextField.text!, bottomText: secondTextField.text!, originalImage: pickedImageView.image!, memedImage: self.genereateMemedImage() )
+        let meme = Meme(topText: firstTextField.text!, bottomText: secondTextField.text!, originalImage: pickedImageView.image!, memedImage: self.genereateMemedImage() )
+        (UIApplication.shared.delegate as! AppDelegate).meme.append(meme)
     }
     
     func genereateMemedImage() -> UIImage {
@@ -115,7 +124,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     //MARK: Button tap functions
-    
     @IBAction func tappedSaveButton(_ sender: Any) {
         let controller = UIActivityViewController(activityItems: [genereateMemedImage()], applicationActivities: nil)
         present(controller, animated: true)
@@ -124,6 +132,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                    if(success && error == nil){
                     self.save()
                     self.dismiss(animated: true, completion: nil);
+                    self.launchTabbedViewController()
                    }
                    else if (error != nil){
                    }
@@ -132,25 +141,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func tappedCancelButton(_ sender: Any) {
         updateDefaultState()
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func tappedPickButton(_ sender: Any) {
-        let controller = UIImagePickerController()
-        controller.delegate = self
-        controller.sourceType = .photoLibrary
-        present(controller, animated: true, completion: nil)
+        chooseImageFromCameraOrPhoto(source: .photoLibrary)
     }
     
     @IBAction func tappedCameraButton(_ sender: Any) {
-        let controller = UIImagePickerController()
-        controller.delegate = self
-        controller.sourceType = .camera
-        present(controller, animated: true, completion: nil)
+        chooseImageFromCameraOrPhoto(source: .camera)
+    }
+    
+    func chooseImageFromCameraOrPhoto(source: UIImagePickerController.SourceType) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = source
+        present(pickerController, animated: true, completion: nil)
     }
     
     
     //MARK: Reusable Functions
-
     func hideUnhideToolBars(topToolBar: Bool, bottomToolBar: Bool){
         self.topToolBar.isHidden = topToolBar
         self.bottomToolBar.isHidden = bottomToolBar
@@ -161,6 +171,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         secondTextField.text = "BOTTOM"
         saveButton.isEnabled = false
         pickedImageView.image = nil
+        firstTextField.resignFirstResponder()
+        secondTextField.resignFirstResponder()
+    }
+    
+    func updateEditableState(meme: Meme){
+        firstTextField.text = meme.topText
+        secondTextField.text = meme.bottomText
+        pickedImageView.image = meme.originalImage
+        saveButton.isEnabled = true
+    }
+    
+    func updateFieldStates(){
+        pickedImageView.contentMode = UIView.ContentMode(rawValue: 1)!
+        firstTextField.delegate = textFieldDelegate
+        secondTextField.delegate = textFieldDelegate
+        firstTextField.defaultTextAttributes = memeTextAttributes
+        firstTextField.textAlignment = .center
+        firstTextField.backgroundColor = UIColor.clear
+        secondTextField.defaultTextAttributes = memeTextAttributes
+        secondTextField.textAlignment = .center
+        secondTextField.backgroundColor = UIColor.clear
+    }
+
+    //MARK: Navigation Functions
+    func launchTabbedViewController(){
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tabBarToViewSent") as! UITabBarController
+        UIApplication.shared.keyWindow?.rootViewController = viewController;
+        present(viewController, animated: true, completion: nil)
     }
 }
 
