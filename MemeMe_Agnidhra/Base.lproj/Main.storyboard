@@ -28,7 +28,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="neB-6v-0Ic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1512" y="-83"/>
+            <point key="canvasLocation" x="-1412" y="-155"/>
         </scene>
         <!--Image Sent Collection View Controller-->
         <scene sceneID="hIw-dd-nZF">
@@ -90,7 +90,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8s-2u-WII" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="326.08695652173918" y="177.45535714285714"/>
+            <point key="canvasLocation" x="429" y="177"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="Bdh-dK-IUG">
@@ -132,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7w-tM-CtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2592.753623188406" y="-102.45535714285714"/>
+            <point key="canvasLocation" x="2393" y="-155"/>
         </scene>
         <!--Image Sent Table View Controller-->
         <scene sceneID="O6d-oD-XyE">
@@ -342,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2575" y="-83"/>
+            <point key="canvasLocation" x="1558" y="-155"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TnS-LX-1dA">
@@ -411,7 +411,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R3B-LL-3tR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-584.05797101449275" y="177.45535714285714"/>
+            <point key="canvasLocation" x="-481" y="177"/>
         </scene>
     </scenes>
     <resources>
@@ -419,6 +419,6 @@
         <image name="table_30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gd9-1J-opm"/>
+        <segue reference="Xyg-d3-Byy"/>
     </inferredMetricsTieBreakers>
 </document>

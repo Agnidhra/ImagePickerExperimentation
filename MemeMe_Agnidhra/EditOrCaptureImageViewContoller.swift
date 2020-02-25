@@ -29,16 +29,16 @@ class EditOrCaptureImageViewContoller: UIViewController, UIImagePickerController
     
     //MARK: Text Attributes
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
-        NSAttributedString.Key.strokeColor: UIColor.green /* TODO: fill in appropriate UIColor */,
-        NSAttributedString.Key.foregroundColor: UIColor.black/* TODO: fill in appropriate UIColor */,
+        NSAttributedString.Key.strokeColor: UIColor.black /* TODO: fill in appropriate UIColor */,
+        NSAttributedString.Key.foregroundColor: UIColor.white/* TODO: fill in appropriate UIColor */,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedString.Key.strokeWidth: 7.00 /* TODO: fill in appropriate Float */
+        NSAttributedString.Key.strokeWidth: -7.00 /* TODO: fill in appropriate Float */
     ]
     
     //MARK: View Setup Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(meme == nil) {
+        if meme == nil {
             setupInitialEditOrCaptureImageViewContoller()
         }else {
             setupEditModeImageViewContoller()
@@ -46,6 +46,7 @@ class EditOrCaptureImageViewContoller: UIViewController, UIImagePickerController
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyBoardNotifications()
     }
@@ -63,8 +64,8 @@ class EditOrCaptureImageViewContoller: UIViewController, UIImagePickerController
         updateFieldStates()
         updateEditableState(meme: meme!)
     }
-
-   
+    
+    
     //MARK: Delegate Functions
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -128,15 +129,13 @@ class EditOrCaptureImageViewContoller: UIViewController, UIImagePickerController
         let controller = UIActivityViewController(activityItems: [genereateMemedImage()], applicationActivities: nil)
         present(controller, animated: true)
         controller.completionWithItemsHandler = {
-                 (activity, success, items, error) in
-                   if(success && error == nil){
-                    self.save()
-                    self.dismiss(animated: true, completion: nil);
-                    self.launchTabbedViewController()
-                   }
-                   else if (error != nil){
-                   }
-               };
+            (activity, success, items, error) in
+            if(success && error == nil){
+                self.save()
+                self.dismiss(animated: true, completion: nil);
+                self.launchTabbedViewController()
+            }
+        };
     }
     
     @IBAction func tappedCancelButton(_ sender: Any) {
@@ -193,7 +192,7 @@ class EditOrCaptureImageViewContoller: UIViewController, UIImagePickerController
         secondTextField.textAlignment = .center
         secondTextField.backgroundColor = UIColor.clear
     }
-
+    
     //MARK: Navigation Functions
     func launchTabbedViewController(){
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
